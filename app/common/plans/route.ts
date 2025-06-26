@@ -11,4 +11,5 @@ router.get('/get/plans/:id', planController.getPlanById)
 router.post('/create', authenticate,upload.none(),planValidation.createPlanValidation,catchError, planController.createPlan)
 router.put('/update/:id', authenticate,upload.none(),planValidation.updatePlanValidation, catchError, planController.updatePlan)
 router.patch('/togglePlanStatus/:id', authenticate, catchError, planController.togglePlanStatus)
+router.get('/list',catchError,planController.getPlanForApp)
 export const plansRouter = router

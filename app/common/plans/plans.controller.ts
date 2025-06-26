@@ -88,3 +88,13 @@ export const getPlanByName = asyncHandler(async (req: Request, res: Response) =>
 	}
 	res.status(200).json(createResponse(plan, 'Plan retrieved successfully'));
 });
+
+export const getPlanForApp = asyncHandler(async(req:Request,res:Response)=>{
+	const plan = await plansService.getPlanForApp();
+	if (!plan || plan.length < 0) {
+		res.status(404).json(createErrorResponse(404, 'Plan not found'));
+		return;
+	}
+	res.status(200).json(createResponse(plan, 'Plan retrieved successfully'));
+	return;
+})

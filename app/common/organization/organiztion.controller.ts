@@ -7,6 +7,7 @@ import * as userService from '../../user/user.service'
 import { emailVerificationOTPMail } from '../../mail/mail.templates';
 import { sendMail } from '../../common/services/mail.service'
 import { v4 as uuidv4 } from 'uuid';
+import {calculatePlanCost} from '../helper/PlanCostCalculator'
 
 
 const emailOTPCache = new Map<string, {
@@ -127,3 +128,6 @@ export const onBoardOrganizationController = asyncHandler(async (req: Request, r
 	return;
 });
 
+export const PlanCostCalculator = asyncHandler(async (req: Request, res: Response) => {
+
+})

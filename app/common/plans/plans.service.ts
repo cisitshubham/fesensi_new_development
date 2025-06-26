@@ -116,3 +116,11 @@ export const getPlanByName = async (name: string) => {
 		updatedAt: formatTime(plan.updatedAt)
 	};
 };
+
+export const getPlanForApp = async()=>{
+	const plans = await Plan.find({status:true}).sort({createdAt:-1});
+	return plans.map(plan => ({
+		id: plan._id,
+		name: plan.name,
+	}));
+}
