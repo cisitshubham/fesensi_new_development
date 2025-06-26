@@ -21,6 +21,7 @@ export const getPlans = async () => {
 			rate: plan.rate,
 			duration: plan.duration,
 			status: plan.status,
+			maxAgent: plan.maxNumberOfAgent,
 			createdBy: plan.createdBy,
 			createdAt: formatTime(plan.createdAt),
 			updatedAt: formatTime(plan.updatedAt)
@@ -48,6 +49,7 @@ export const getPlanById = async (id: string) => {
 			rate: plan.rate,
 			duration: plan.duration,
 			status: plan.status,
+			maxAgent: plan.maxNumberOfAgent,
 			createdBy: plan.createdBy
 				? {
 					_id: (plan.createdBy as any)._id,
@@ -109,6 +111,7 @@ export const getPlanByName = async (name: string) => {
 		_id: plan._id,
 		name: plan.name,
 		rate: plan.rate,
+		maxAgent: plan.maxNumberOfAgent,
 		duration: plan.duration,
 		status: plan.status,
 		createdBy: plan.createdBy,

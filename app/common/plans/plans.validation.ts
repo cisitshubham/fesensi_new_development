@@ -11,6 +11,16 @@ export const createPlanValidation = [
 		.exists({ checkFalsy: true }).withMessage('Rate is required')
 		.bail()
 		.isNumeric().withMessage('Rate must be a number'),
+	
+	body('maxNumberOfAgent')
+		.notEmpty().isNumeric().withMessage('Max number of agents must be a number')
+		.bail()
+		.custom((value) => {
+			if (value < 0) {
+				throw new Error('Max number of agents must be greater than or equal to 0');
+			}
+			return true;
+		}),	
 
 	 body('duration')
 		.exists({ checkFalsy: true }).withMessage('Duration is required')
@@ -26,6 +36,7 @@ export const createPlanValidation = [
 			}
 			return true;
 		}),
+
 ];
 
 

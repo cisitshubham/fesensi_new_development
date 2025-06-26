@@ -15,6 +15,7 @@ export interface IPlan extends Document {
 	name: string;
 	rate: number;
 	duration: number; // Duration in months
+	maxNumberOfAgent?: number;
 	createdBy: mongoose.Types.ObjectId;
 	status: boolean;
 	createdAt: Date;
@@ -26,6 +27,7 @@ export const PlanSchema: Schema = new Schema({
 	name: { type: String, required: true },
 	createdBy: { type: Schema.Types.ObjectId, ref: 'User', required: true },
 	rate: { type: Number, required: true },
+	maxNumberOfAgent: { type: Number, default: 0 }, 
 	duration: [{
 		type: String,
 		required: true,
