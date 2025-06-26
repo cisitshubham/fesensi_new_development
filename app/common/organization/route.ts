@@ -6,7 +6,7 @@ import * as onBoardOrganizationValidation from './organization.validation'
 import upload from '../helper/file.handler'
 
 const router =Router(); 
-router.post('/onboard/organization', authenticate,upload.none(), onBoardOrganizationValidation.onBoardOrganizationValidator,catchError,onBoardOrganizationController.onBoardOrganizationController)
+router.post('/onboard/organization',upload.none(), onBoardOrganizationValidation.onBoardOrganizationValidator,catchError,onBoardOrganizationController.onBoardOrganizationController)
 router.post('/send/email/otp', onBoardOrganizationValidation.sendEmailOTPValidator, catchError, onBoardOrganizationController.sendEmailOTP);
 router.post('/verify/email/otp',onBoardOrganizationValidation.OTPVerificationValidator,catchError,onBoardOrganizationController.verifyEmailOTP);
 

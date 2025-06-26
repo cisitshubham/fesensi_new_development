@@ -10,11 +10,14 @@ export const createDepartment = async (data:IDepartments) => {
 }
 
 export const createBulkDepartment = async (data: IDepartments[]) => {
-  const Departments = data.map(item => ({
-	...item,
+  const validDepartments = data.filter(item => item.name && item.name.trim() !== '').map(item => ({
+    ...item,
   }));
-  await Department.insertMany(Departments);
-  return Departments;
+  if (validDepartments.length === 0) {
+    throw new Error('No valid departments to insert. Each department must have a name.');
+  }
+  await Department.insertMany(validDepartments);
+  return validDepartments;
 }
 
 export const getDepartments = async (query: any) => {

@@ -59,14 +59,13 @@ export const createBulkDepartment = asyncHandler(async (req: Request, res: Respo
 		header: ['name', 'status'],
 		defval: '', 
 	});
-	  
+	
 	fs.unlinkSync(filePath);
 	if (!data || data.length === 0) {
 		res.status(400).json(createErrorResponse(400, 'Excel contains no data'));
 		return;
 	}
 	const Department = await departmentService.createBulkDepartment(data);
-
 	if (!Department) {
 		res.status(400).json(createErrorResponse(400, 'Failed to create Department!'));
 		return;
