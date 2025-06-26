@@ -6,7 +6,6 @@ import * as organizationService from './organization.service';
 import * as userService from '../../user/user.service'
 import { emailVerificationOTPMail } from '../../mail/mail.templates';
 import { sendMail } from '../../common/services/mail.service'
-import { v4 as uuidv4 } from 'uuid';
 import {calculatePlanCost} from '../helper/PlanCostCalculator'
 
 
